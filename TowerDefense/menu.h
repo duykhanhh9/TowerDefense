@@ -1,6 +1,6 @@
 #pragma once
-#include"Console.h"
-
+#include"Controller.h"
+#pragma comment(lib, "Winmm.lib") 
 
 void playSound();
-void mons1();
+void soundMode(int);

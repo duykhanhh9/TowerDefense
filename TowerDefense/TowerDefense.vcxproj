@@ -128,17 +128,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="console.cpp" />
+    <ClCompile Include="Console.cpp" />
+    <ClCompile Include="Controller.cpp" />
+    <ClCompile Include="Item.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="menu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h" />
-    <ClInclude Include="main.h" />
+    <ClInclude Include="Controller.h" />
+    <ClInclude Include="Item.h" />
     <ClInclude Include="menu.h" />
   </ItemGroup>
   <ItemGroup>
     <Media Include="2.wav" />
+    <Media Include="3.wav" />
     <Media Include="effect.wav" />
     <Media Include="option2.wav" />
     <Media Include="soundback.wav" />
