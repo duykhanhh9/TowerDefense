@@ -1,10 +1,17 @@
 #include"Controller.h"
 
-
 HWND Controller::consoleWindow = GetConsoleWindow();
 HANDLE Controller::consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 HANDLE hConsoleOutput;
 HANDLE hConsoleInput;
+
+void Controller::setSizeConsole(int width, int height)
+{
+    HWND console = GetConsoleWindow();
+    RECT r;
+    GetWindowRect(console, &r);
+    MoveWindow(console, r.left, r.top, width, height, TRUE);
+}
 
 void Controller::setFontInfo()
 {
@@ -28,11 +35,6 @@ void Controller::setAndCenterWindow()
         posY = (GetSystemMetrics(SM_CYSCREEN) - height) / 2;
     MoveWindow(consoleWindow, posX, posY, width, height, TRUE);
 }
-
-
-
-
-
 
 // Ham thay doi kich co man hinh console.
 void Controller::resizeConsole(SHORT width, SHORT height)

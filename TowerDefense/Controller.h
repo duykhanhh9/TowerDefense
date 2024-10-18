@@ -13,6 +13,7 @@ class Controller {
 public:
     static HWND consoleWindow;
     static HANDLE consoleOutput;
+    static void setSizeConsole(int, int);
     void setFontInfo();
     static void setAndCenterWindow();
     static void resizeConsole(SHORT width, SHORT height);
