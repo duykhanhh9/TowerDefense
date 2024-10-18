@@ -1,7 +1,7 @@
 
 #include"Draw.h"
 
-void Draw::drawBox(int x, int y, int color, SHORT width, SHORT height)
+void Draw::drawBox(int x, int y, SHORT width, SHORT height, int color)
 {
     Controller::gotoXY(x, y);
     for (int i = 0; i < width; i++)
@@ -80,7 +80,7 @@ void Draw::turnSound(int x, int y, int width, int height)
         Controller::creatColorBlock(x - 2 + (width / 2), y + i, 0, 0, "  ");
 }
 
-void Draw::drawBlock(int x, int y, int color, SHORT width, SHORT height)
+void Draw::drawBlock(int x, int y, SHORT width, SHORT height, int color)
 {
     Controller::setBackgroundColor(color);
 
@@ -94,7 +94,7 @@ void Draw::drawBlock(int x, int y, int color, SHORT width, SHORT height)
     }
 }
 
-void Draw::drawA(int x, int y, int color, SHORT width, SHORT height)
+void Draw::drawA(int x, int y, SHORT width, SHORT height, int color)
 {
     drawBlock(x, y + height, color, width, height * 6);
     drawBlock(x + width, y, color, width * 2, height);
@@ -102,7 +102,7 @@ void Draw::drawA(int x, int y, int color, SHORT width, SHORT height)
     drawBlock(x + (width * 3), y + height, color, width, height * 6);
 }
 
-void Draw::drawB(int x, int y, int color, SHORT width, SHORT height)
+void Draw::drawB(int x, int y, SHORT width, SHORT height, int color)
 {
     drawBlock(x, y, color, width, 7 * height);
     drawBlock(x + width, y, color, width * 2, height);
@@ -112,7 +112,7 @@ void Draw::drawB(int x, int y, int color, SHORT width, SHORT height)
     drawBlock(x + width * 3, y + height * 4, color, width, height * 2);
 }
 
-void Draw::drawC(int x, int y, int color, SHORT width, SHORT height)
+void Draw::drawC(int x, int y, SHORT width, SHORT height, int color)
 {
     drawBlock(x, y + height, color, width, height * 5);
     drawBlock(x + width, y, color, width * 3, height);
