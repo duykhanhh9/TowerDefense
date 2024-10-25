@@ -2,5 +2,18 @@
 #include"Controller.h"
 #pragma comment(lib, "Winmm.lib") 
 
-void playSound();
-void soundMode(int);
+class Menu {
+public:
+    static void playSound();
+    static void soundMode(int);
+
+    Menu();
+
+
+    static int mainMenu();
+    static void settingSound(int&);
+    static void leaderBoard();
+    static void savePlayer(string);
+    static void deletePlayer(string);
+    static bool checkFile(string);
+};
