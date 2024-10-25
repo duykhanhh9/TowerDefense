@@ -37,28 +37,28 @@ using namespace std;
 #define KEY_RIGHT 77
 #define KEY_DOWN 80
 
-class Controller {
-public:
-    static HWND consoleWindow;
-    static HANDLE consoleOutput;
+class Controller 
+{
+    public:
+        static HWND consoleWindow;
+        static HANDLE consoleOutput;
 
-    static void setSizeConsole(int, int);
-    static void setFontInfo();
-    static void setAndCenterWindow();
-    static void clrscr(void);
+        static void setScaleWindow();
+        static void setAndCenterWindow();
+        static void setScrollbar(BOOL);
+        static void setCursor(BOOL);
 
-    static void gotoXY(SHORT x, SHORT y);
-    static SHORT wherex();
-    static SHORT wherey();
+        static void setTextColor(WORD color);
+        static void setBackgroundTextColor(WORD color);
+        static void setConsoleColor(WORD color);
+        static void setColors(WORD textColor, WORD backgroundColor);
+        
+        static void gotoXY(SHORT x, SHORT y);
+        static SHORT whereX();
+        static SHORT whereY();
 
-    static void setColor(WORD color);
-    static void setFullColors(WORD textColor, WORD backgroundColor);
-    static void setFullBackgroundColor(WORD color);
-    static void setBackgroundColor(WORD color);
+        static void creatColorBlock(int x, int y, int t_color, int b_color, string name);
 
-    static WORD textattr();
-    static void Cursor(BOOL bVisible = TRUE, DWORD dwSize = 25);
-    static void deleteRow(SHORT SStartPos, SHORT SNumberRow);
-    static void creatColorBlock(int x, int y, int t_color, int b_color, string name);
+        static void clrscr(void);
+        static void clearConsole();
 };
-
