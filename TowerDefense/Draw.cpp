@@ -1,90 +1,11 @@
+#include "Draw.h"
 
-#include"Draw.h"
-
-void Draw::drawBox(int x, int y, SHORT width, SHORT height, int color)
+// draw alphabet
+void Draw::drawBlock(SHORT x, SHORT y, SHORT width, SHORT height, int color)
 {
-    Controller::gotoXY(x, y);
-    for (int i = 0; i < width; i++)
-        Controller::creatColorBlock(x + i, y, BLACK, BLACK, " ");
+    Controller::setBackgroundTextColor(color);
 
-    int i = 0;
-    for (; i < height; i++)
-    {
-        Controller::creatColorBlock(x, y + i, BLACK, BLACK, "  ");
-        Controller::creatColorBlock(x + width, y + i, BLACK, 0, "  ");
-    }
-
-    Controller::gotoXY(x + 1, y + i);
-    for (i = 0; i < width; i++)
-        Controller::creatColorBlock(x + i, y + height - 1, 0, 0, " ");
-}
-
-void Draw::drawLeft(int x, int y, int color, SHORT width, SHORT height) 
-{
-    for (int i = 0; i < width / 2 - 2; i++) 
-    {
-        Controller::creatColorBlock(x + i, y + 1, color, color, " ");
-        Controller::creatColorBlock(x + i, y + height - 2, color, color, " ");
-    }
-
-    for (int i = 2; i < height - 2; i++) {
-        for (int j = 0; j < width / 2; j++) {
-            Controller::creatColorBlock(x - 2 + j, y + i, color, color, " ");
-        }
-    }
-}
-
-void Draw::drawRight(int x, int y, int color, SHORT width, SHORT height) {
-    for (int i = width / 2; i < width; i++) {
-        Controller::creatColorBlock(x + i, y + 1, color, color, " ");
-        Controller::creatColorBlock(x + i, y + height - 2, color, color, " ");
-    }
-
-    for (int i = 2; i < height - 2; i++) {
-        for (int j = width / 2 - 2; j < width; j++) {
-            Controller::creatColorBlock(x + 2 + j, y + i, color, color, " ");
-        }
-    }
-}
-
-void Draw::turnSound(int x, int y, int width, int height) 
-{
-    Controller::gotoXY(x, y);
-    for (int i = 0; i < width; i++)
-        Controller::creatColorBlock(x + i, y, 0, 0, " ");
-
-    Controller::creatColorBlock(x - 2, y + 1, 0, 0, "  ");
-    
-    for (int i = 0; i < width; i++)
-        Controller::creatColorBlock(x + i, y + 1, 7, 7, " ");
-    Controller::creatColorBlock(x + width, y + 1, 0, 0, "  ");
-    
-    for (int i = 1; i <= height - 4; i++) 
-    {
-        Controller::creatColorBlock(x - 4, y + i + 1, 0, 0, "  ");
-        for (int j = 0; j < width + 4; j++)
-            Controller::creatColorBlock(x - 2 + j, y + 1 + i, 7, 7, " ");
-
-        Controller::creatColorBlock(x + width + 2, y + 1 + i, 0, 0, "  ");
-    }
-
-    Controller::creatColorBlock(x - 2, y + height - 2, 0, 0, "  ");
-    for (int i = 0; i < width; i++)
-        Controller::creatColorBlock(x + i, y + height - 2, 7, 7, " ");
-    Controller::creatColorBlock(x + width, y + height - 2, 0, 0, "  ");
-
-    for (int i = 0; i < width; i++)
-        Controller::creatColorBlock(x + i, y + height - 1, 0, 0, " ");
-
-    for (int i = 1; i < height; i++)
-        Controller::creatColorBlock(x - 2 + (width / 2), y + i, 0, 0, "  ");
-}
-
-void Draw::drawBlock(int x, int y, SHORT width, SHORT height, int color)
-{
-    Controller::setBackgroundColor(color);
-
-    for (SHORT i = 0; i < height; ++i)
+    for (SHORT i = 0; i < height; i++)
     {
         Controller::gotoXY(x, y + i);
         for (SHORT j = 0; j < width; ++j)
@@ -93,7 +14,6 @@ void Draw::drawBlock(int x, int y, SHORT width, SHORT height, int color)
         }
     }
 }
-
 
 void Draw::drawA(SHORT x, SHORT y, SHORT width, SHORT height, int color)
 {
@@ -302,6 +222,86 @@ void Draw::drawZ(SHORT x, SHORT y, SHORT width, SHORT height, int color)
     drawBlock(x, y + height * 4, width * 3, height, color);
 }
 
+// Draw digit
+void Draw::drawZero(SHORT x, SHORT y, SHORT width, SHORT height, int color) 
+{
+    drawBlock(x, y, width * 2, height, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+    drawBlock(x, y, width, height * 4, color);
+    drawBlock(x + width * 2, y, width, height * 4, color);
+}
+
+void Draw::drawOne(SHORT x, SHORT y, SHORT width, SHORT height, int color) 
+{
+    drawBlock(x, y, width, height * 5, color);
+}
+
+void Draw::drawTwo(SHORT x, SHORT y, SHORT width, SHORT height, int color) 
+{
+    drawBlock(x, y, width * 2, height, color);
+    drawBlock(x + width * 2, y, width, height * 2, color);
+    drawBlock(x, y + (height * 2), width * 3, height, color);
+    drawBlock(x, y + (height * 2), width, height * 2, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+}
+
+void Draw::drawThree(SHORT x, SHORT y, SHORT width, SHORT height, int color) 
+{
+    drawBlock(x, y, width * 2, height, color);
+    drawBlock(x + width * 2, y, width, height * 4, color);
+    drawBlock(x, y + (height * 2), width * 3, height, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+}
+
+void Draw::drawFour(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
+    drawBlock(x, y, width, height * 3, color);
+    drawBlock(x + width, y + height * 2, width, height, color);
+    drawBlock(x + width * 2, y, width, height * 5, color);
+}
+
+void Draw::drawFive(SHORT x, SHORT y, SHORT width, SHORT height, int color) 
+{
+    drawBlock(x, y, width * 3, height, color);
+    drawBlock(x, y, width, height * 2, color);
+    drawBlock(x, y + height * 2, width * 3, height, color);
+    drawBlock(x + width * 2, y + height * 2, width, height * 2, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+}
+
+void Draw::drawSix(SHORT x, SHORT y, SHORT width, SHORT height, int color) 
+{
+    drawBlock(x, y, width * 3, height, color);
+    drawBlock(x, y, width, height * 5, color);
+    drawBlock(x, y + (height * 2), width * 3, height, color);
+    drawBlock(x + width * 2, y + (height * 2), width, height * 2, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+}
+
+void Draw::drawSeven(SHORT x, SHORT y, SHORT width, SHORT height, int color) 
+{
+    drawBlock(x, y, width * 3, height, color);
+    drawBlock(x + width * 2, y, width, height * 5, color);
+}
+
+void Draw::drawEight(SHORT x, SHORT y, SHORT width, SHORT height, int color) 
+{
+    drawBlock(x, y, width * 3, height, color);
+    drawBlock(x + width * 2, y, width, height * 5, color);
+    drawBlock(x, y + (height * 2), width * 3, height, color);
+    drawBlock(x, y, width, height * 5, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+}
+
+void Draw::drawNine(SHORT x, SHORT y, SHORT width, SHORT height, int color) 
+{
+    drawBlock(x, y, width * 3, height, color);
+    drawBlock(x + width * 2, y, width, height * 5, color);
+    drawBlock(x, y + (height * 2), width * 3, height, color);
+    drawBlock(x, y, width, height * 2, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+}
+
+// Draw icon
 void Draw::drawSettingIcon(SHORT x, SHORT y, SHORT width, SHORT height)
 {
     int m, n, tmp;
@@ -316,9 +316,9 @@ void Draw::drawSettingIcon(SHORT x, SHORT y, SHORT width, SHORT height)
         {
             inFile >> tmp;
             if (tmp == 1)
-                Draw::drawBlock(x, y, width, height, BLACK);
+                drawBlock(x, y, width, height, BLACK);
             else if (tmp == 2)
-                Draw::drawBlock(x, y, width, height, GRAY);
+                drawBlock(x, y, width, height, GRAY);
 
             x += width;
         }
@@ -344,12 +344,12 @@ void Draw::drawHeartIcon(SHORT x, SHORT y, SHORT width, SHORT height)
             inFile >> tmp;
 
             if (tmp == 1)
-                Draw::drawBlock(x, y, width, height, BLACK);
+                drawBlock(x, y, width, height, BLACK);
             else if (tmp == 2)
-                Draw::drawBlock(x, y, width, height, LIGHT_RED);
+                drawBlock(x, y, width, height, LIGHT_RED);
 
             else if (tmp == 3)
-                Draw::drawBlock(x, y, width, height, RED);
+                drawBlock(x, y, width, height, RED);
 
 
             x += width;
@@ -375,9 +375,9 @@ void Draw::drawCoinIcon(SHORT x, SHORT y, SHORT width, SHORT height)
             inFile >> tmp;
 
             if (tmp == 1)
-                Draw::drawBlock(x, y, width, height, BLACK);
+                drawBlock(x, y, width, height, BLACK);
             else if (tmp == 2)
-                Draw::drawBlock(x, y, width, height, YELLOW);
+                drawBlock(x, y, width, height, YELLOW);
 
             x += width;
         }
@@ -402,15 +402,15 @@ void Draw::drawPineIcon(SHORT x, SHORT y, SHORT width, SHORT height)
             inFile >> tmp;
 
             if (tmp == 1)
-                Draw::drawBlock(x, y, width, height, BLACK);
+                drawBlock(x, y, width, height, BLACK);
             else if (tmp == 2)
-                Draw::drawBlock(x, y, width, height, GREEN);
+                drawBlock(x, y, width, height, GREEN);
             else if (tmp == 3)
-                Draw::drawBlock(x, y, width, height, LIGHT_GREEN);
+                drawBlock(x, y, width, height, LIGHT_GREEN);
             else if (tmp == 4)
-                Draw::drawBlock(x, y, width, height, YELLOW);
+                drawBlock(x, y, width, height, YELLOW);
             else if (tmp == 5)
-                Draw::drawBlock(x, y, width, height, RED);
+                drawBlock(x, y, width, height, RED);
 
             x += width;
         }
@@ -419,7 +419,6 @@ void Draw::drawPineIcon(SHORT x, SHORT y, SHORT width, SHORT height)
     }
     inFile.close();
 }
-
 
 void Draw::drawSantaClaus(SHORT x, SHORT y, SHORT width, SHORT height)
 {
@@ -436,19 +435,19 @@ void Draw::drawSantaClaus(SHORT x, SHORT y, SHORT width, SHORT height)
             inFile >> tmp;
 
             if (tmp == 1)
-                Draw::drawBlock(x, y, width, height, BLACK);
+                drawBlock(x, y, width, height, BLACK);
             else if (tmp == 2)
-                Draw::drawBlock(x, y, width, height, RED);
+                drawBlock(x, y, width, height, RED);
             else if (tmp == 3)
-                Draw::drawBlock(x, y, width, height, BRIGHT_WHITE);
+                drawBlock(x, y, width, height, BRIGHT_WHITE);
             else if (tmp == 4)
-                Draw::drawBlock(x, y, width, height, LIGHT_RED);
+                drawBlock(x, y, width, height, LIGHT_RED);
             else if (tmp == 5)
-                Draw::drawBlock(x, y, width, height, GREEN);
+                drawBlock(x, y, width, height, GREEN);
             else if (tmp == 6)
-                Draw::drawBlock(x, y, width, height, YELLOW);
+                drawBlock(x, y, width, height, YELLOW);
             else if (tmp == 7)
-                Draw::drawBlock(x, y, width, height, LIGHT_YELLOW);
+                drawBlock(x, y, width, height, LIGHT_YELLOW);
 
             x += width;
         }
@@ -458,73 +457,36 @@ void Draw::drawSantaClaus(SHORT x, SHORT y, SHORT width, SHORT height)
     inFile.close();
 }
 
-
-void Draw::drawZero(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
-    drawBlock(x, y, width * 2, height, color);
-    drawBlock(x, y + height * 4, width * 3, height, color);
-    drawBlock(x, y, width, height * 4, color);
-    drawBlock(x + width * 2, y, width, height * 4, color);
-}
-
-void Draw::drawOne(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
-    drawBlock(x, y, width, height * 5, color);
-}
-
-void Draw::drawTwo(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
-    drawBlock(x, y, width * 2, height, color);
-    drawBlock(x + width * 2, y, width, height * 2, color);
-    drawBlock(x, y + (height * 2), width * 3, height, color);
-    drawBlock(x, y + (height * 2), width, height * 2, color);
-    drawBlock(x, y + height * 4, width * 3, height, color);
-}
-
-void Draw::drawThree(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
-    drawBlock(x, y, width * 2, height, color);
-    drawBlock(x + width * 2, y, width, height * 4, color);
-    drawBlock(x, y + (height * 2), width * 3, height, color);
-    drawBlock(x, y + height * 4, width * 3, height, color);
-}
-
-void Draw::drawFour(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
-    drawBlock(x, y, width, height * 2, color);
-    drawBlock(x, y + height / 2 + 2, width * 2, height, color);
-    drawBlock(x + width * 2, y, width, height * 5, color);
-}
-
-void Draw::drawFive(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
-    drawBlock(x, y, width * 3, height, color);
-    drawBlock(x, y, width, height * 2, color);
-    drawBlock(x, y + (height * 2), width * 3, height, color);
-    drawBlock(x + width * 2, y + (height * 2), width, height * 2, color);
-    drawBlock(x, y + height * 4, width * 3, height, color);
-}
-
-void Draw::drawSix(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
-    drawBlock(x, y, width * 3, height, color);
-    drawBlock(x, y, width, height * 5, color);
-    drawBlock(x, y + (height * 2), width * 3, height, color);
-    drawBlock(x + width * 2, y + (height * 2), width, height * 2, color);
-    drawBlock(x, y + height * 4, width * 3, height, color);
-}
-
-void Draw::drawSeven(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
-    drawBlock(x, y, width * 3, height, color);
-    drawBlock(x + width * 2, y, width, height * 5, color);
-}
-
-void Draw::drawEight(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
-    drawBlock(x, y, width * 3, height, color);
-    drawBlock(x + width * 2, y, width, height * 5, color);
-    drawBlock(x, y + (height * 2), width * 3, height, color);
-    drawBlock(x, y, width, height * 5, color);
-    drawBlock(x, y + height * 4, width * 3, height, color);
-}
-
-void Draw::drawNine(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
-    drawBlock(x, y, width * 3, height, color);
-    drawBlock(x + width * 2, y, width, height * 5, color);
-    drawBlock(x, y + (height * 2), width * 3, height, color);
-    drawBlock(x, y, width, height * 2, color);
-    drawBlock(x, y + height * 4, width * 3, height, color);
+void Draw::drawMonster(SHORT x, SHORT y, SHORT width, SHORT height)
+{
+    int m, n, tmp;
+    SHORT x_tmp = x;
+    ifstream inFile("iconMonster.txt");
+    
+    inFile >> m >> n;
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            inFile >> tmp;
+            if (tmp == 1)
+                drawBlock(x, y, width, height, BLACK);           
+            else if (tmp == 2)         
+                drawBlock(x, y, width, height, LIGHT_AQUA);           
+            else if (tmp == 3)
+                drawBlock(x, y, width, height, YELLOW);           
+            else if (tmp == 4)
+                drawBlock(x, y, width, height, RED);
+            else if (tmp == 5)           
+                drawBlock(x, y, width, height, LIGHT_RED);          
+            else if (tmp == 6)            
+                drawBlock(x, y, width, height, GREEN);
+          
+            x += width;
+        }
+        y += height;
+        x = x_tmp;
+    }
+    inFile.close();
 }
 
