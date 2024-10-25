@@ -6,6 +6,8 @@
 #include <string>
 #include <cstring>
 #include <mmsystem.h>
+#include <stack>
+#include <fstream>
 
 using namespace std;
 
@@ -18,13 +20,22 @@ using namespace std;
 #define YELLOW 6
 #define WHITE 7
 #define GRAY 8
-//#define LIGHT_BLUE 9
-//#define LIGHT_GREEN 10
-//#define LIGHT_AQUA 11
-//#define LIGHT_RED 12
-//#define LIGHT_BLUE 13
-//#define LIGHT YELLOW 14
-//#define BRIGHT_WHITE 15
+#define LIGHT_BLUE 9
+#define LIGHT_GREEN 10
+#define LIGHT_AQUA 11
+#define LIGHT_RED 12
+#define LIGHT_PURPLE 13
+#define LIGHT_YELLOW 14
+#define BRIGHT_WHITE 15
+
+#define KEY_DELETE 8
+#define KEY_ENTER 13
+#define KEY_ESC 27
+#define KEY_SPACE 32
+#define KEY_UP 72
+#define KEY_LEFT 75
+#define KEY_RIGHT 77
+#define KEY_DOWN 80
 
 class Controller {
 public:
