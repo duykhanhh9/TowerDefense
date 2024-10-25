@@ -41,19 +41,21 @@ class Controller {
 public:
     static HWND consoleWindow;
     static HANDLE consoleOutput;
+
     static void setSizeConsole(int, int);
-    void setFontInfo();
+    static void setFontInfo();
     static void setAndCenterWindow();
-    static void resizeConsole(SHORT width, SHORT height);
     static void clrscr(void);
+
     static void gotoXY(SHORT x, SHORT y);
     static SHORT wherex();
     static SHORT wherey();
+
     static void setColor(WORD color);
     static void setFullColors(WORD textColor, WORD backgroundColor);
     static void setFullBackgroundColor(WORD color);
     static void setBackgroundColor(WORD color);
-    static void resettextattr();
+
     static WORD textattr();
     static void Cursor(BOOL bVisible = TRUE, DWORD dwSize = 25);
     static void deleteRow(SHORT SStartPos, SHORT SNumberRow);
