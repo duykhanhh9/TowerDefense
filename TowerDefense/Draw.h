@@ -52,4 +52,15 @@ class Draw
 
 
         static void drawSantaClaus(SHORT, SHORT, SHORT, SHORT);
+
+        static void drawZero(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawOne(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawTwo(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawThree(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawFour(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawFive(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawSix(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawSeven(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawEight(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawNine(SHORT, SHORT, SHORT, SHORT, int);
 };
