@@ -457,3 +457,74 @@ void Draw::drawSantaClaus(SHORT x, SHORT y, SHORT width, SHORT height)
     }
     inFile.close();
 }
+
+
+void Draw::drawZero(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
+    drawBlock(x, y, width * 2, height, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+    drawBlock(x, y, width, height * 4, color);
+    drawBlock(x + width * 2, y, width, height * 4, color);
+}
+
+void Draw::drawOne(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
+    drawBlock(x, y, width, height * 5, color);
+}
+
+void Draw::drawTwo(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
+    drawBlock(x, y, width * 2, height, color);
+    drawBlock(x + width * 2, y, width, height * 2, color);
+    drawBlock(x, y + (height * 2), width * 3, height, color);
+    drawBlock(x, y + (height * 2), width, height * 2, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+}
+
+void Draw::drawThree(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
+    drawBlock(x, y, width * 2, height, color);
+    drawBlock(x + width * 2, y, width, height * 4, color);
+    drawBlock(x, y + (height * 2), width * 3, height, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+}
+
+void Draw::drawFour(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
+    drawBlock(x, y, width, height * 2, color);
+    drawBlock(x, y + height / 2 + 2, width * 2, height, color);
+    drawBlock(x + width * 2, y, width, height * 5, color);
+}
+
+void Draw::drawFive(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
+    drawBlock(x, y, width * 3, height, color);
+    drawBlock(x, y, width, height * 2, color);
+    drawBlock(x, y + (height * 2), width * 3, height, color);
+    drawBlock(x + width * 2, y + (height * 2), width, height * 2, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+}
+
+void Draw::drawSix(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
+    drawBlock(x, y, width * 3, height, color);
+    drawBlock(x, y, width, height * 5, color);
+    drawBlock(x, y + (height * 2), width * 3, height, color);
+    drawBlock(x + width * 2, y + (height * 2), width, height * 2, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+}
+
+void Draw::drawSeven(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
+    drawBlock(x, y, width * 3, height, color);
+    drawBlock(x + width * 2, y, width, height * 5, color);
+}
+
+void Draw::drawEight(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
+    drawBlock(x, y, width * 3, height, color);
+    drawBlock(x + width * 2, y, width, height * 5, color);
+    drawBlock(x, y + (height * 2), width * 3, height, color);
+    drawBlock(x, y, width, height * 5, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+}
+
+void Draw::drawNine(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
+    drawBlock(x, y, width * 3, height, color);
+    drawBlock(x + width * 2, y, width, height * 5, color);
+    drawBlock(x, y + (height * 2), width * 3, height, color);
+    drawBlock(x, y, width, height * 2, color);
+    drawBlock(x, y + height * 4, width * 3, height, color);
+}
+
