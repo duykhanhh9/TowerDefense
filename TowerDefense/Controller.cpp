@@ -5,22 +5,13 @@ HANDLE Controller::consoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 HANDLE hConsoleOutput;
 HANDLE hConsoleInput;
 
-void Controller::setSizeConsole(int width, int height)
+void Controller::setScaleWindow()
 {
-    HWND console = GetConsoleWindow();
-    RECT r;
-    GetWindowRect(console, &r);
-    MoveWindow(console, r.left, r.top, width, height, TRUE);
-}
-
-void Controller::setFontInfo()
-{
-    // 12 - 24
     CONSOLE_FONT_INFOEX info;
     info.cbSize = sizeof(info);
     GetCurrentConsoleFontEx(consoleOutput, FALSE, &info);
-    info.dwFontSize.X = 12;
-    info.dwFontSize.Y = 24;
+    info.dwFontSize.X = 5;
+    info.dwFontSize.Y = 3;
     wcscpy_s(info.FaceName, L"Consolas");
     SetCurrentConsoleFontEx(consoleOutput, FALSE, &info);
 }
@@ -29,26 +20,26 @@ void Controller::setAndCenterWindow()
 {
     RECT rectClient, rectWindow;
     GetClientRect(consoleWindow, &rectClient), GetWindowRect(consoleWindow, &rectWindow);
-    int width = 1100;
-    int height = 768;
+    int width = 1500;
+    int height = 700;
     int posX = (GetSystemMetrics(SM_CXSCREEN) - width) / 2,
         posY = (GetSystemMetrics(SM_CYSCREEN) - height) / 2;
     MoveWindow(consoleWindow, posX, posY, width, height, TRUE);
 }
 
-// Ham thay doi kich co man hinh console.
-void Controller::resizeConsole(SHORT width, SHORT height)
+// Ham an hien con tro.
+void Controller::setCursor(BOOL bVisible)
 {
-    HWND console = GetConsoleWindow();
-    RECT r;
-    GetWindowRect(console, &r);
-    MoveWindow(console, r.left, r.top, width, height, TRUE);
+    CONSOLE_CURSOR_INFO ConsoleCursorInfo;
+    ConsoleCursorInfo.bVisible = bVisible;
+    ConsoleCursorInfo.dwSize = 25; // Phan tram bao trum o cua con tro chuot
+    SetConsoleCursorInfo(hConsoleOutput, &ConsoleCursorInfo);
+}
 
-    COORD crd = { width, height };
-    SMALL_RECT rec = { 0, 0, width - 1, height - 1 };
-    hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
-    SetConsoleWindowInfo(hConsoleOutput, TRUE, &rec);
-    SetConsoleScreenBufferSize(hConsoleOutput, crd);
+void Controller::setScrollbar(BOOL Show)
+{
+    HWND hWnd = GetConsoleWindow();
+    ShowScrollBar(hWnd, SB_BOTH, Show);
 }
 
 // Ham xoa man hinh khong bi dut(lag).
@@ -76,7 +67,7 @@ void Controller::gotoXY(SHORT x, SHORT y)
 }
 
 // Tra ve vi tri x hien tai.
-SHORT Controller::wherex()
+SHORT Controller::whereX()
 {
     CONSOLE_SCREEN_BUFFER_INFO coninfo;
     hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -85,7 +76,7 @@ SHORT Controller::wherex()
 }
 
 // Tra ve vi tri y hien tai.
-SHORT Controller::wherey()
+SHORT Controller::whereY()
 {
     CONSOLE_SCREEN_BUFFER_INFO coninfo;
     hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -93,8 +84,8 @@ SHORT Controller::wherey()
     return coninfo.dwCursorPosition.Y;
 }
 
-// Ham to mau chu.
-void Controller::setColor(WORD color)
+// To mau chu.
+void Controller::setTextColor(WORD color)
 {
     hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -109,8 +100,8 @@ void Controller::setColor(WORD color)
     SetConsoleTextAttribute(hConsoleOutput, wAttributes);
 }
 
-// to background tru chu cai
-void Controller::setFullBackgroundColor(WORD color) {
+// To mau nen cua chu
+void Controller::setConsoleColor(WORD color) {
     HANDLE hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
     CONSOLE_SCREEN_BUFFER_INFO screenBufferInfo;
@@ -128,8 +119,8 @@ void Controller::setFullBackgroundColor(WORD color) {
     SetConsoleCursorPosition(hConsoleOutput, coord);
 }
 
-// Ham thay doi mau nen hien thi cua chu.
-void Controller::setBackgroundColor(WORD color)
+// To mau console
+void Controller::setBackgroundTextColor(WORD color)
 {
     hConsoleOutput = GetStdHandle(STD_OUTPUT_HANDLE);
 
@@ -145,57 +136,30 @@ void Controller::setBackgroundColor(WORD color)
     SetConsoleTextAttribute(hConsoleOutput, wAttributes);
 }
 
-WORD Controller::textattr()
+// Set 3 ham tren
+void Controller::setColors(WORD textColor, WORD backgroundColor)
 {
-    CONSOLE_SCREEN_BUFFER_INFO ConsoleInfo;
-    GetConsoleScreenBufferInfo(hConsoleOutput, &ConsoleInfo);
-    return ConsoleInfo.wAttributes;
+    setTextColor(textColor);
+    setBackgroundTextColor(backgroundColor);
+    setConsoleColor(backgroundColor);
 }
 
-void Controller::resettextattr()
+
+void Controller::clearConsole()
 {
-    DWORD Mau_Mac_Dinh = textattr();
-    SetConsoleTextAttribute(hConsoleOutput, Mau_Mac_Dinh);
+    system("cls");
 }
 
 void Controller::creatColorBlock(int x, int y, int t_color, int b_color, string name)
 {
-    setBackgroundColor(b_color);
-    int len = name.length();
-    setColor(t_color);
+    setBackgroundTextColor(b_color);
+    size_t len = name.length();
+    setTextColor(t_color);
     for (int i = 0; i < len; ++i)
     {
         gotoXY(x + i, y);
         cout << " ";
     }
     gotoXY(x, y); cout << name;
-    setBackgroundColor(1);
+    setBackgroundTextColor(1);
 }
-
-// Ham an hien con tro.
-void Controller::Cursor(BOOL bVisible, DWORD dwSize)
-{
-    CONSOLE_CURSOR_INFO ConsoleCursorInfo;
-    ConsoleCursorInfo.bVisible = bVisible;
-    ConsoleCursorInfo.dwSize = dwSize; // Phan tram bao trum o cua con tro chuot
-    SetConsoleCursorInfo(hConsoleOutput, &ConsoleCursorInfo);
-}
-
-// Xoa so luong dong, SStartPos - Vi tri bat dau xoa, SNumberRow so luong dong can xoa.
-void Controller::deleteRow(SHORT SStartPos, SHORT SNumberRow)
-{
-    CONSOLE_SCREEN_BUFFER_INFO  ConsoleInfo;
-    COORD Pos = { 0, SStartPos };
-    DWORD Tmp;
-    GetConsoleScreenBufferInfo(hConsoleOutput, &ConsoleInfo);
-    FillConsoleOutputCharacter(hConsoleOutput, ' ', ConsoleInfo.dwSize.X * SNumberRow, Pos, &Tmp);
-    FillConsoleOutputAttribute(hConsoleOutput, 15, ConsoleInfo.dwSize.X * SNumberRow, Pos, &Tmp);
-    SetConsoleCursorPosition(hConsoleOutput, Pos);
-}
-
-void Controller::setFullColors(WORD textColor, WORD backgroundColor) {
-    setBackgroundColor(backgroundColor);
-    setFullBackgroundColor(backgroundColor);
-    setColor(textColor);
-}
-
