@@ -43,7 +43,6 @@ class Draw
         static void drawY(SHORT, SHORT, SHORT, SHORT, int);
         static void drawZ(SHORT, SHORT, SHORT, SHORT, int);
 
-        static void drawBox(SHORT, SHORT, SHORT, SHORT, int);
 
         static void drawSettingIcon(SHORT, SHORT, SHORT, SHORT);
         static void drawHeartIcon(SHORT, SHORT, SHORT, SHORT);
@@ -63,4 +62,12 @@ class Draw
         static void drawSeven(SHORT, SHORT, SHORT, SHORT, int);
         static void drawEight(SHORT, SHORT, SHORT, SHORT, int);
         static void drawNine(SHORT, SHORT, SHORT, SHORT, int);
+
+        static void drawIcon(SHORT, SHORT, SHORT, SHORT, int, int);
+        static void drawIconPlay(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawIconLeaderBoard(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawIconExit(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawIconSave(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawIconMusic(SHORT, SHORT, SHORT, SHORT, int);
+        static void drawIconHelp(SHORT, SHORT, SHORT, SHORT, int);
 };
