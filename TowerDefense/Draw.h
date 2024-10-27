@@ -6,6 +6,8 @@ using namespace std;
 class Draw
 {
 	public:
+//Nam
+        // Old
         static void drawBlock(SHORT, SHORT, SHORT, SHORT, int);
 
         static void drawA(SHORT, SHORT, SHORT, SHORT, int);
@@ -49,6 +51,15 @@ class Draw
         static void drawCoinIcon(SHORT, SHORT, SHORT, SHORT);
         static void drawPineIcon(SHORT, SHORT, SHORT, SHORT);
 
+        // New
+        static void drawFrame(SHORT, SHORT, SHORT, SHORT,int ,int, int, int);
+
+        static void printConsoleInput(int, SHORT, SHORT, SHORT, SHORT, int, int);
+
+        static void drawColon(SHORT, SHORT, SHORT, SHORT, int); 
+
+// Khanh
+        
 
         static void drawSantaClaus(SHORT, SHORT, SHORT, SHORT);
 
