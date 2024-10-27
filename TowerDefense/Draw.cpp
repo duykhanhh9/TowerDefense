@@ -891,3 +891,23 @@ void Draw::drawIconHelp(SHORT x, SHORT y, SHORT width, SHORT height, int color) 
     }
     ifs.close();
 }
+
+// new 
+void Draw::drawInforIcon(SHORT x, SHORT y, SHORT width, SHORT height, int color) {
+    ifstream ifs("iconInfor.txt");
+    int row, column, tmp;
+    if (ifs.is_open()) {
+        ifs >> row;
+        ifs >> column;
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < column; j++) {
+                ifs >> tmp;
+                if (tmp == 1) {
+                    drawBlock(x + j * width, y + i * height, width, height, color);
+                }
+            }
+        }
+    }
+    ifs.close();
+}
+
