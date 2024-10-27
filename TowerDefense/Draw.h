@@ -81,4 +81,7 @@ class Draw
         static void drawIconSave(SHORT, SHORT, SHORT, SHORT, int);
         static void drawIconMusic(SHORT, SHORT, SHORT, SHORT, int);
         static void drawIconHelp(SHORT, SHORT, SHORT, SHORT, int);
+
+// new
+        static void drawInforIcon(SHORT, SHORT, SHORT, SHORT, int);
 };
