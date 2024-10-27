@@ -1,6 +1,258 @@
 #include "Draw.h"
 
 // draw alphabet
+
+void Draw::drawColon(SHORT x, SHORT y, SHORT width, SHORT height, int color)
+{
+    drawBlock(x + width, y + height, width, height, color);
+    drawBlock(x + width, y + height * 3, width, height, color);
+}
+
+void Draw::printConsoleInput(int key, SHORT x, SHORT y, SHORT width, SHORT height, int shadowColor, int color)
+{ 
+    if (key == 48)
+    {
+        drawZero(x + height, y, width, height, shadowColor);
+        drawZero(x, y, width, height, color);
+    }
+    else if (key == 49)
+    {
+        drawOne(x + height, y, width, height, shadowColor);
+        drawOne(x, y, width, height, color);
+    }
+    else if (key == 50)
+    {
+        drawTwo(x + height, y, width, height, shadowColor);
+        drawTwo(x, y, width, height, color);
+    }
+    else if (key == 51)
+    {
+        drawThree(x + height, y, width, height, shadowColor);
+        drawThree(x, y, width, height, color);
+    }
+    else if (key == 52)
+    {
+        drawFour(x + height, y, width, height, shadowColor);
+        drawFour(x, y, width, height, color);
+    }
+    else if (key == 53)
+    {
+        drawFive(x + height, y, width, height, shadowColor);
+        drawFive(x, y, width, height, color);
+    }
+    else if (key == 54)
+    {
+        drawSix(x + height, y, width, height, shadowColor);
+        drawSix(x, y, width, height, color);
+    }
+    else if (key == 55)
+    {
+        drawSeven(x + height, y, width, height, shadowColor);
+        drawSeven(x, y, width, height, color);
+    }
+    else if (key == 56)
+    {
+        drawEight(x + height, y, width, height, shadowColor);
+        drawEight(x, y, width, height, color);
+    }
+    else if (key == 57)
+    {
+        drawNine(x + height, y, width, height, shadowColor);
+        drawNine(x, y, width, height, color);
+    }
+    else if (key == 58)
+    {
+        drawColon(x + width / 2, y, width, height, shadowColor);
+        drawColon(x, y, width, height, color);
+    }
+    else if (key == 65 || key == 97)
+    {
+        drawA(x + height, y, width, height, shadowColor);
+        drawA(x, y, width, height, color);
+    }
+    else if (key == 66 || key == 98)
+    {
+        drawB(x + height, y, width, height, shadowColor);
+        drawB(x, y, width, height, color);
+    }
+    else if (key == 67 || key == 99)
+    {
+        drawC(x + height, y, width, height, shadowColor);
+        drawC(x, y, width, height, color);
+    }
+    else if (key == 68 || key == 100)
+    {
+        drawD(x + height, y, width, height, shadowColor);
+        drawD(x, y, width, height, color);
+    }
+    else if (key == 69 || key == 101)
+    {
+        drawE(x + height, y, width, height, shadowColor);
+        drawE(x, y, width, height, color);
+    }
+    else if (key == 70 || key == 102)
+    {
+        drawF(x + height, y, width, height, shadowColor);
+        drawF(x, y, width, height, color);
+    }
+    else if (key == 71 || key == 103)
+    {
+        drawG(x + height, y, width, height, shadowColor);
+        drawG(x, y, width, height, color);
+    }
+    else if (key == 72 || key == 104)
+    {
+        drawH(x + height, y, width, height, shadowColor);
+        drawH(x, y, width, height, color);
+    }
+    else if (key == 73 || key == 105)
+    {
+        drawI(x + height, y, width, height, shadowColor);
+        drawI(x, y, width, height, color);
+    }
+    else if (key == 74 || key == 106)
+    {
+        drawJ(x + height, y, width, height, shadowColor);
+        drawJ(x, y, width, height, color);
+    }
+    else if (key == 75 || key == 107)
+    {
+        drawK(x + height, y, width, height, shadowColor);
+        drawK(x, y, width, height, color);
+    }
+    else if (key == 76 || key == 108)
+    {
+        drawL(x + height, y, width, height, shadowColor);
+        drawL(x, y, width, height, color);
+    }
+    else if (key == 77 || key == 109)
+    {
+        drawM(x + height, y, width, height, shadowColor);
+        drawM(x, y, width, height, color);
+    }
+    else if (key == 78 || key == 110)
+    {
+        drawN(x + height, y, width, height, shadowColor);
+        drawN(x, y, width, height, color);
+    }
+    else if (key == 79 || key == 111)
+    {
+        drawO(x + height, y, width, height, shadowColor);
+        drawO(x, y, width, height, color);
+    }
+    else if (key == 80 || key == 112)
+    {
+        drawP(x + height, y, width, height, shadowColor);
+        drawP(x, y, width, height, color);
+    }
+    else if (key == 81 || key == 103)
+    {
+        drawQ(x + height, y, width, height, shadowColor);
+        drawQ(x, y, width, height, color);
+    }
+    else if (key == 82 || key == 114)
+    {
+        drawR(x + height, y, width, height, shadowColor);
+        drawR(x, y, width, height, color);
+
+    }
+    else if (key == 83 || key == 115)
+    {
+        drawS(x + height, y, width, height, shadowColor);
+        drawS(x, y, width, height, color);
+    }
+    else if (key == 84 || key == 116)
+    {
+        drawT(x + height, y, width, height, shadowColor);
+        drawT(x, y, width, height, color);
+    }
+    else if (key == 85 || key == 117)
+    {
+        drawU(x + height, y, width, height, shadowColor);
+        drawU(x, y, width, height, color);
+    }
+    else if (key == 86 || key == 118)
+    {
+        drawV(x + height, y, width, height, shadowColor);
+        drawV(x, y, width, height, color);
+    }
+    else if (key == 87 || key == 119)
+    {
+        drawW(x + height, y, width, height, shadowColor);
+        drawW(x, y, width, height, color);
+    }
+    else if (key == 88 || key == 120)
+    {
+        drawX(x + height, y, width, height, shadowColor);
+        drawX(x, y, width, height, color);
+    }
+    else if (key == 89 || key == 121)
+    {
+        drawY(x + height, y, width, height, shadowColor);
+        drawY(x, y, width, height, color);
+    }
+    else if (key == 90 || key == 122)
+    {
+        drawZ(x + height, y, width, height, shadowColor);
+        drawZ(x, y, width, height, color);
+    }
+}
+
+void Draw::drawFrame(SHORT x, SHORT y, SHORT widScale, SHORT heiScale, int width, int height, int color, int bgColor)
+{
+    // canh tren
+    drawBlock(x + widScale * 2, y, width - widScale * 4, heiScale, BLACK);
+    drawBlock(x + widScale * 2, y + height - heiScale, width - widScale * 4, heiScale, BLACK);
+    
+    // canh dung
+    drawBlock(x, y + heiScale * 3, widScale, height - heiScale * 6, BLACK);
+    drawBlock(x + width - widScale, y + heiScale * 3, widScale, height - heiScale * 6, BLACK);
+
+    // canh goc
+    drawBlock(x, y + height - heiScale * 3, widScale * 2, heiScale, BLACK);
+    drawBlock(x + width - widScale * 2, y + height - heiScale * 3, widScale * 2, heiScale, BLACK);
+
+    drawBlock(x + widScale, y + height - heiScale * 2, widScale * 2, heiScale, BLACK);
+    drawBlock(x + width - widScale * 3, y + height - heiScale * 2, widScale * 2, heiScale, BLACK);
+
+    drawBlock(x, y + heiScale * 2, widScale * 2, heiScale, BLACK);
+    drawBlock(x + width - widScale * 2, y + heiScale * 2, widScale * 2, heiScale, BLACK);
+
+    drawBlock(x + widScale, y + heiScale, widScale * 2, heiScale, BLACK);
+    drawBlock(x + width - widScale * 3, y + heiScale, widScale * 2, heiScale, BLACK);
+
+    // canh tren
+    drawBlock(x + widScale * 3, y + heiScale, width - widScale * 6, heiScale, color);
+    drawBlock(x + widScale * 3, y + height - heiScale * 2, width - widScale * 6, heiScale, color);
+
+    // canh dung
+    drawBlock(x + widScale, y + heiScale * 4, widScale, height - heiScale * 8, color);
+    drawBlock(x + width - widScale * 2, y + heiScale * 4, widScale, height - heiScale * 8, color);
+
+    // canh goc
+    drawBlock(x + widScale * 2, y + heiScale * 2, widScale * 2, heiScale, color);
+    drawBlock(x + width - widScale * 4, y + heiScale * 2, widScale * 2, heiScale, color);
+
+    drawBlock(x + widScale, y + heiScale * 3, widScale * 2, heiScale, color);
+    drawBlock(x + width - widScale * 3, y + heiScale * 3, widScale * 2, heiScale, color);
+
+    drawBlock(x + widScale, y + height - heiScale * 4, widScale * 2, heiScale, color);
+    drawBlock(x + width - widScale * 3, y + height - heiScale * 4, widScale * 2, heiScale, color);
+
+    drawBlock(x + widScale * 2, y + height - heiScale * 3, widScale * 2, heiScale, color);
+    drawBlock(x + width - widScale * 4, y + height - heiScale * 3, widScale * 2, heiScale, color);
+
+    // mau nen
+    drawBlock(x + widScale * 4, y + heiScale * 2, width - widScale * 8, heiScale, bgColor);
+    drawBlock(x + widScale * 4, y + height - heiScale * 3, width - widScale * 8, heiScale, bgColor);
+
+    drawBlock(x + widScale * 3, y + heiScale * 3, width - widScale * 6, heiScale, bgColor);
+    drawBlock(x + widScale * 2, y + heiScale * 4, width - widScale * 4, height - heiScale * 8, bgColor);
+    drawBlock(x + widScale * 3, y + height - heiScale * 4, width - widScale * 6, heiScale, bgColor);
+
+}
+
+
 void Draw::drawBlock(SHORT x, SHORT y, SHORT width, SHORT height, int color)
 {
     Controller::setBackgroundTextColor(color);
