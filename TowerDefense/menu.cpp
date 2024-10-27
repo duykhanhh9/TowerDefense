@@ -223,3 +223,131 @@ void Menu::settingSound(int& mode) {
         }
     }
 }
+
+void Menu::loginPlayer()
+{
+    Draw::drawFrame(80, 10, 4, 2, 750, 180, AQUA, BRIGHT_WHITE);
+    SHORT x = 150, y = 30, width = 6, height = 3;
+ 
+    string t = "INFORMATION OF THE PLAYER";
+    for (auto i : t)
+    {
+        int key = (int)i;
+        if (key == 32)
+            x += width * 2;
+        else
+        {
+            Draw::printConsoleInput(key, x, y, width, height, AQUA, BLUE);
+            x = Controller::whereX() + width;
+        }
+    }
+
+    t = "NAME ACCOUNT: ";
+    width = 4, height = 2;
+    y = Controller::whereY() + 25;
+    x = 150;
+    for (auto i : t)
+    {
+        int key = (int)i;
+        if (key == 32)
+            x += width * 2;
+        else
+        {
+            Draw::printConsoleInput(key, x, y, width, height, AQUA, BLUE);
+            x = Controller::whereX() + width;
+        }
+    }
+
+    //Controller::setCursor(1);
+
+    SHORT x_tmp;
+    stack<int> distant;
+
+    while (true)
+    {
+        int key = _getch();
+
+        if (key == KEY_ENTER)
+        {
+            
+        }
+
+        else if (key == KEY_DELETE)
+        {
+            if (!distant.empty())
+            {
+                x_tmp = distant.top();
+                Draw::drawBlock(x_tmp, y, x - x_tmp, height * 5, BRIGHT_WHITE);
+                x = x_tmp;
+                distant.pop();
+            }
+        }
+        else if (key == KEY_SPACE)
+        {
+            x += width * 2;
+            distant.push(x);
+        }
+
+        else
+        {
+            Draw::printConsoleInput(key, x, y, width, height, GRAY, BLACK);
+            distant.push(x);
+            x = Controller::whereX() + width;
+        }
+    }
+
+}
+
+void Menu::mainScreen()
+{
+    Menu a;
+    a.loginPlayer();
+
+    SHORT width = 6, height = 3;
+    SHORT x = 150;
+    //SHORT x_tmp;
+    SHORT y = 30;
+    stack<int> distant;
+
+
+
+
+    /*while (true)
+    {
+        int key = _getch();
+
+        if (key == KEY_ESC)
+            Menu::createMainScreen();
+
+        else if (key == KEY_ENTER)
+        {
+            Controller::clrscr();
+            Draw::drawA(40, 10, width, height, BLUE);
+        }
+
+        else if (key == KEY_DELETE)
+        {
+            if (!distant.empty())
+            {
+                 x_tmp = distant.top();
+                 Draw::drawBlock(x_tmp, y, x - x_tmp, height * 5, BRIGHT_WHITE);
+                 x = x_tmp;
+                 distant.pop();
+            }
+        }
+        else if (key == KEY_SPACE)
+        {
+            x += width * 2;
+            distant.push(x);
+        }
+                
+            else
+            {
+                Draw::printConsoleInput(key, x, y, width, height, AQUA, BLUE);
+                distant.push(x);
+                x = Controller::whereX() + width;
+            }
+    }*/
+
+
+}
