@@ -9,7 +9,11 @@ public:
 
     Menu();
 
+// Nam
+    void loginPlayer();
+    static void mainScreen();
 
+//Khanh
     static int mainMenu();
     static void settingSound(int&);
     static void leaderBoard();
